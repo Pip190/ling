@@ -1,0 +1,36 @@
+server:
+  port: 8808
+spring:
+  datasource:
+    url: jdbc:mysql://127.0.0.1:3306/ling?useSSL=false&characterEncoding=utf8&serverTimezone=GMT%2B8
+    username: root
+    password: 123456
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    type: com.alibaba.druid.pool.DruidDataSource  # 德鲁伊配置
+    # Druid 配置
+    druid:
+      initial-size: 5           # 配置初始化大小/最小/最大
+      min-idle: 5               # 最小连接池数量
+      max-active: 20            # 最大连接池数量
+      max-wait: 6000            # 获取连接时最大等待时间，单位毫秒。
+  data:
+    redis:
+      host: 127.0.0.1
+      port: 6379
+      database: 0
+      lettuce:
+        pool:
+          max-active: 8 #最大连接
+          max-idle: 8   #最大空闲连接
+          min-idle: 0   #最小空闲连接
+          max-wait: 100 #连接等待时间
+logging:
+  level:
+    com.pip190: debug
+mybatis:
+  mapper-locations: classpath:mapper/*.xml
+  type-aliases-package: com.pip190.domain
+pagehelper:
+  propertyName: propertyValue
+  reasonable: false
+  defaultCount: true # 分页插件默认参数支持 default-count 形式，自定义扩展的参数，必须大小写一致
